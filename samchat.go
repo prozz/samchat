@@ -1,7 +1,7 @@
 package main
 
 import (
-	"mobster"
+	"github.com/prozz/mobster"
 	"fmt"
 	"flag"
 )

@@ -1,22 +1,23 @@
 # samchat
-simple tcp chat server using mobster framework
+Simple tcp chat server using [mobster](http://github.com/prozz/mobster) library.
 
 ```
+go get github.com/prozz/mobster
 go build
 ./samchat -port=<port>
 ```
 
-now you may do
+Now you may connect with:
 ```
 telnet 127.0.0.1 <port>
 ```
 
-first message to server have to be auth packet in following format
+First message to server have to be auth packet in following format:
 ```
 a <user> <room>
 ```
-be quick, server disconnects quite fast when no auth packet sent
+(be quick, server disconnects quite fast when no auth packet sent)
 
-after auth packet any message send to server will be broadcasted to any connected user in same room. can be easily tested with few telnet sessions opened.
+After auth packet is sent, any message send to server will be broadcasted to all connected users in same room. Can be easily tested with few telnet sessions opened.
 
-enjoy!
+Enjoy!
