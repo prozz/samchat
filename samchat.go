@@ -12,13 +12,13 @@ func main() {
 
 	s := mobster.NewServer()
 
-	s.OnConnect = func(ctx mobster.Ctx, name, room string) {
+	s.OnConnect = func(ctx *mobster.Ops, name, room string) {
 		ctx.SendToRoom(room, fmt.Sprintf("%s joins", name))
 	}
-	s.OnDisconnect = func(ctx mobster.Ctx, name, room string) {
+	s.OnDisconnect = func(ctx *mobster.Ops, name, room string) {
 		ctx.SendToRoom(room, fmt.Sprintf("%s leaves", name))
 	}
-	s.OnMessage = func(ctx mobster.Ctx, name, room, message string) {
+	s.OnMessage = func(ctx *mobster.Ops, name, room, message string) {
 		ctx.SendToRoom(room, fmt.Sprintf("%s: %s", name, message))
 	}
 
