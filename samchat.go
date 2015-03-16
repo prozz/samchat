@@ -1,15 +1,14 @@
 package main
 
 import (
-	"github.com/prozz/mobster"
 	"fmt"
-	"flag"
+	"github.com/prozz/mobster"
+	"log"
+	"os"
+	"strconv"
 )
 
 func main() {
-	port := flag.Int("port", 8765, "chat server port")
-	flag.Parse()
-
 	s := mobster.NewServer()
 	s.Debug = true
 
@@ -23,5 +22,10 @@ func main() {
 		ops.SendToRoom(room, fmt.Sprintf("%s: %s", user, message))
 	}
 
-	s.StartServerAndWait(*port)
+	port, err := strconv.Atoi(os.Getenv("RUPPELLS_SOCKETS_LOCAL_PORT"))
+	if err != nil {
+		log.Fatalf("cannot get port: %s", err)
+	}
+
+	s.StartServerAndWait(port)
 }
